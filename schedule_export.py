@@ -37,7 +37,10 @@ doc = __revit__.ActiveUIDocument.Document
 uidoc = __revit__.ActiveUIDocument
 
 
-desktop = os.path.expandvars(os.getcwd())
+
+cwd = os.getcwd()
+export_path = '\\'.join(cwd.split('\\', 3)[:3])  + '\\' + '06 Sustainable Design'
+desktop = os.path.expandvars(export_path)
 
 vseop = ViewScheduleExportOptions()
 # vseop.ColumnHeaders = ExportColumnHeaders.None
