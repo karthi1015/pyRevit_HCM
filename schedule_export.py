@@ -36,8 +36,8 @@ import subprocess
 doc = __revit__.ActiveUIDocument.Document
 uidoc = __revit__.ActiveUIDocument
 
-desktop = os.path.expandvars('%temp%\\')
-# desktop = os.path.expandvars('%userprofile%\\desktop')
+
+desktop = os.path.expandvars('file_path')
 
 vseop = ViewScheduleExportOptions()
 # vseop.ColumnHeaders = ExportColumnHeaders.None
