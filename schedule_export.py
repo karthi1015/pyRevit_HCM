@@ -37,7 +37,7 @@ doc = __revit__.ActiveUIDocument.Document
 uidoc = __revit__.ActiveUIDocument
 
 
-desktop = os.path.expandvars('file_path')
+desktop = os.path.expandvars('O:/07_Sustainability/Green Resources/Revit/Python_testing')
 
 vseop = ViewScheduleExportOptions()
 # vseop.ColumnHeaders = ExportColumnHeaders.None
@@ -56,25 +56,12 @@ for element_id in selected_ids:
     if not isinstance(element, ViewSchedule):
         print('No schedule in Selection. No schedule exported.')
         continue
-
-    filename = "".join(x for x in element.ViewName if x not in ['*']) + '.csv'
-    name = doc.ProjectInformation.Name
+        
+	name = doc.ProjectInformation.Name
     number = doc.ProjectInformation.Number
+    filename = "".join(x for x in element.ViewName if x not in ['*'])+'_' + name + '_'+ number + '.csv'
     element.Export(desktop, filename, vseop)
 
     print('EXPORTED: {0}\n      TO: {1}\n'.format(element.ViewName, filename))
-    EXCEL = r"C:\Program Files (x86)\Microsoft Office\root\Office16\EXCEL.EXE"
-    if os.path.exists(EXCEL):
-        print('Excel Found. Trying to open...')
-        print('Filename is: ', filename)
-        try:
-            full_filepath = os.path.join(desktop, filename)
-            os.system('start excel \"{path}\"'.format(path=full_filepath))
-        except:
-            print('Sorry, something failed:')
-            print('Filepath: {}'.filename)
-            print('EXCEL Path: {}'.format(EXCEL))
-    else:
-        print('Could not find excel. EXCEL: {}'.format(EXCEL))
 
 print('Done')
