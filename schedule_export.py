@@ -37,7 +37,7 @@ doc = __revit__.ActiveUIDocument.Document
 uidoc = __revit__.ActiveUIDocument
 
 
-desktop = os.path.expandvars('file_path')
+desktop = os.path.expandvars(os.getcwd())
 
 vseop = ViewScheduleExportOptions()
 # vseop.ColumnHeaders = ExportColumnHeaders.None
@@ -54,14 +54,12 @@ if not selected_ids.Count:
 for element_id in selected_ids:
     element = doc.GetElement(element_id)
     if not isinstance(element, ViewSchedule):
-        print('No schedule in Selection. No schedule exported.')
+        print('No schedule in Selection. Skipping. End.')
         continue
-        
-	name = doc.ProjectInformation.Name
+
+    name = doc.ProjectInformation.Name
     number = doc.ProjectInformation.Number
-    filename = "".join(x for x in element.ViewName if x not in ['*'])+'_' + name + '_'+ number + '.csv'
+    filename = "".join(x for x in element.ViewName if x not in ['*']) + '_'+ number + '_' + name + '.csv'
     element.Export(desktop, filename, vseop)
 
     print('EXPORTED: {0}\n      TO: {1}\n'.format(element.ViewName, filename))
-
-print('Done')
