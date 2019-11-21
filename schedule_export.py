@@ -36,10 +36,8 @@ import subprocess
 doc = __revit__.ActiveUIDocument.Document
 uidoc = __revit__.ActiveUIDocument
 
-
-
 cwd = os.getcwd()
-export_path = '\\'.join(cwd.split('\\', 3)[:3])  + '\\' + '06 Sustainable Design'
+export_path = "\".join(cwd.split("\", 3)[:3]) + '\06 Sustainable Design'
 desktop = os.path.expandvars(export_path)
 
 vseop = ViewScheduleExportOptions()
