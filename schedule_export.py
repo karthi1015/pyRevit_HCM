@@ -37,7 +37,7 @@ doc = __revit__.ActiveUIDocument.Document
 uidoc = __revit__.ActiveUIDocument
 
 
-desktop = os.path.expandvars('O:/07_Sustainability/Green Resources/Revit/Python_testing')
+desktop = os.path.expandvars('file_path')
 
 vseop = ViewScheduleExportOptions()
 # vseop.ColumnHeaders = ExportColumnHeaders.None
