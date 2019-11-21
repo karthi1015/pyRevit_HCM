@@ -58,6 +58,8 @@ for element_id in selected_ids:
         continue
 
     filename = "".join(x for x in element.ViewName if x not in ['*']) + '.csv'
+    name = doc.ProjectInformation.Name
+    number = doc.ProjectInformation.Number
     element.Export(desktop, filename, vseop)
 
     print('EXPORTED: {0}\n      TO: {1}\n'.format(element.ViewName, filename))
