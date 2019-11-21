@@ -54,7 +54,7 @@ if not selected_ids.Count:
 for element_id in selected_ids:
     element = doc.GetElement(element_id)
     if not isinstance(element, ViewSchedule):
-        print('No schedule in Selection. Skipping...')
+        print('No schedule in Selection. No schedule exported.')
         continue
 
     filename = "".join(x for x in element.ViewName if x not in ['*']) + '.csv'
